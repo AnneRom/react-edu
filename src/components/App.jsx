@@ -4,6 +4,7 @@ import  Product from './Product'
 import  Gallery from './Gallery'
 import  MailBox from './MailBox'
 import  Item from './Item'
+import  List from './List'
 
 export default function App() {
   return (
@@ -67,6 +68,8 @@ export default function App() {
         />
       </ul>
     </section>
+
+    <List />
 
     </>
   )
