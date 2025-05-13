@@ -5,6 +5,7 @@ import  Gallery from './Gallery'
 import  MailBox from './MailBox'
 import  Item from './Item'
 import  List from './List'
+import  Alert from './Alert'
 
 export default function App() {
   return (
@@ -70,6 +71,27 @@ export default function App() {
     </section>
 
     <List />
+
+    <Alert
+       variant="warning"
+       text="Please update your email!"
+    />
+    <Alert 
+       variant="error"
+       text="There was an error during transaction!"
+    />
+    <Alert 
+       variant="success"
+       text="Payment received, thank you for your purchase!"
+    />
+    <Alert 
+       variant="info"
+       text=" Would you like to browse our recommended products?"
+    />
+    <Alert 
+       variant="info"
+       text=" Would you like to browse our recommended products?"
+    />
 
     </>
   )
