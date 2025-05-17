@@ -6,6 +6,7 @@ import  MailBox from './MailBox'
 import  Item from './Item'
 import  List from './List'
 import  Alert from './Alert'
+import { IoBookOutline } from "react-icons/io5";
 
 export default function App() {
   return (
@@ -96,6 +97,8 @@ export default function App() {
        outlined
        elevated
     />
+
+    <IoBookOutline className='icon-book' size={36}/>
 
     </>
   )
