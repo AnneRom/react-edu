@@ -83,14 +83,18 @@ export default function App() {
     <Alert 
        variant="success"
        text="Payment received, thank you for your purchase!"
+       elevated={true}
     />
     <Alert 
        variant="info"
        text=" Would you like to browse our recommended products?"
+       outlined
     />
     <Alert 
        variant="info"
        text=" Would you like to browse our recommended products?"
+       outlined
+       elevated
     />
 
     </>
