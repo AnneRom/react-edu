@@ -6,11 +6,21 @@ import  MailBox from './MailBox'
 import  Item from './Item'
 import  List from './List'
 import  Alert from './Alert'
-import { IoBookOutline } from "react-icons/io5";
+import  Card from './Card'
+import { IoBookOutline } from "react-icons/io5"
+// import  CustomButton from './Button'
+import  Button from './Button'
+import Fruits from './Fruits'
 
 export default function App() {
   return (
     <>
+    <Fruits />
+    <Button />
+    <Button />
+    {/* <CustomButton message="Lalalalalala"> Play music</CustomButton>
+    <CustomButton message="Uploading your data..."> Upload data</CustomButton> */}
+
     <h1>Products</h1>
     <Product 
       name="Cookies"
@@ -99,6 +109,19 @@ export default function App() {
     />
 
     <IoBookOutline className='icon-book' size={36}/>
+
+    {/* <Card 
+    text="Hello!"/> */}
+
+    <Card>
+    Hello!
+    <h1>Title</h1>
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+    </ul>
+    </Card>
+
 
     </>
   )
