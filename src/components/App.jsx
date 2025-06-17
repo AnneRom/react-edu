@@ -11,13 +11,35 @@ import { IoBookOutline } from "react-icons/io5"
 // import  CustomButton from './Button'
 import  Button from './Button'
 import Fruits from './Fruits'
+import { useState } from 'react'
+import  ButtonEffect from './ButtonEffect'
+import  Timer from './Timer'
+import  LoginForm from './LoginForm'
 
 export default function App() {
+  const [ clicks, setClicks ] = useState(0);
+    
+  const handleClick = () => {
+    setClicks(clicks + 1)
+  }
+  const [showTimer, setShowTimer] = useState(true)
+
   return (
     <>
+    <LoginForm />
+
+    <button onClick={() => setShowTimer((prev) => !prev)}>
+      {showTimer ? "Приховати таймер" : "Показати таймер"}
+    </button>
+
+    {showTimer && <Timer />}
+
+    <ButtonEffect />
+
     <Fruits />
-    <Button />
-    <Button />
+   
+    <Button value={clicks} onUpdate={handleClick}/>
+    <Button value={clicks} onUpdate={handleClick}/>
     {/* <CustomButton message="Lalalalalala"> Play music</CustomButton>
     <CustomButton message="Uploading your data..."> Upload data</CustomButton> */}
 
