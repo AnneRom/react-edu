@@ -15,6 +15,7 @@ import { useState } from 'react'
 import  ButtonEffect from './ButtonEffect'
 import  Timer from './Timer'
 import  LoginForm from './LoginForm'
+import  SearchBar from './SearchBar'
 
 export default function App() {
   const [ clicks, setClicks ] = useState(0);
@@ -24,10 +25,19 @@ export default function App() {
   }
   const [showTimer, setShowTimer] = useState(true)
 
+  const handleLogin = (userData) => {
+    console.log(userData)
+  }
+
   return (
     <>
-    <LoginForm />
-
+    <SearchBar />
+    
+    <div>
+      <h1>Login to your account</h1>
+      <LoginForm onLogin={handleLogin}/>
+    </div>
+    
     <button onClick={() => setShowTimer((prev) => !prev)}>
       {showTimer ? "Приховати таймер" : "Показати таймер"}
     </button>

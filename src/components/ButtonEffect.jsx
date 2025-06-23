@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const Button = () => {
     // const [ clicks, setClicks ] = useState(0)
@@ -10,11 +10,11 @@ const Button = () => {
 
     // return <button onClick={() =>  setClicks(clicks + 1)}>Current: {clicks}</button>
     useEffect(() => {
-        const inter = setInterval(() => {
-            console.log(`Interval - ${Date.now()}`)
-        }, 2000)
+        // const inter = setInterval(() => {
+        //     console.log(`Interval - ${Date.now()}`)
+        // }, 2000)
         return () => {
-            clearInterval(inter)
+            // clearInterval(inter)
         }
     }, [])
 
