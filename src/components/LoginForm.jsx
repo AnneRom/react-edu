@@ -1,38 +1,86 @@
-import { useId } from "react"
+//Неконтрольована форма
+// import { useId } from "react"
+import { useState } from "react";
 
-const LoginForm = ({ onLogin }) => {
-    const loginId = useId();
-    const passwordId = useId();
+// const LoginForm = ({ onLogin }) => {
+//     const loginId = useId();
+//     const passwordId = useId();
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault()
+//     const handleSubmit = (evt) => {
+//         evt.preventDefault()
 
-        const form = evt.target
-        const { login, password } = form.elements
+//         const form = evt.target
+//         const { login, password } = form.elements
 
-        console.log(form)
-        console.log(login, password)
+//         console.log(form)
+//         console.log(login, password)
 
-        onLogin({
-            login: login.value,
-            password: password.value
-        })
+//         onLogin({
+//             login: login.value,
+//             password: password.value
+//         })
 
-        form.reset()
-    }
+//         form.reset()
+//     }
 
 
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <label htmlFor={loginId}>Login: </label>
+//             <input type="text" name="login"/>
+//             <br />
+//             <label htmlFor={passwordId}>Password: </label>
+//             <input type="password" name="password" />
+//             <br />
+//             <button type="submit">Log in</button>
+//         </form>
+//     )
+
+// }
+// export default LoginForm
+
+//Контрольована форма
+
+const LoginForm = () => {
+    const [values, setValues] = useState({
+      login: "",
+      password: "",
+    });
+  
+    const handleChange = (evt) => {
+      setValues({
+        ...values,
+        [evt.target.name]: evt.target.value,
+      });
+    };
+  
+    const handleSumit = (evt) => {
+      evt.preventDefault();
+  
+      console.log(values);
+  
+      setValues({
+        login: "",
+        password: "",
+      });
+    };
+  
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor={loginId}>Login: </label>
-            <input type="text" name="login"/>
-            <br />
-            <label htmlFor={passwordId}>Password: </label>
-            <input type="password" name="password" />
-            <br />
-            <button type="submit">Log in</button>
-        </form>
-    )
-
-}
-export default LoginForm
+      <form onSubmit={handleSumit}>
+        <input
+          type="text"
+          name="login"
+          value={values.login}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+        <button type="submit">Login</button>
+      </form>
+    );
+  };
+  export default LoginForm

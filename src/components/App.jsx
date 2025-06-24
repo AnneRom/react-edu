@@ -16,6 +16,8 @@ import  ButtonEffect from './ButtonEffect'
 import  Timer from './Timer'
 import  LoginForm from './LoginForm'
 import  SearchBar from './SearchBar'
+import  LangSwitcher from './LangSwitcher'
+import  FeedbackForm from './FeedbackForm'
 
 export default function App() {
   const [ clicks, setClicks ] = useState(0);
@@ -25,17 +27,63 @@ export default function App() {
   }
   const [showTimer, setShowTimer] = useState(true)
 
-  const handleLogin = (userData) => {
-    console.log(userData)
+  // const handleLogin = (userData) => {
+  //   console.log(userData)
+  // }
+
+  const [lang, setLang] = useState("pl")
+
+  const [coffeeSize, setCoffeeSize] = useState("lg");
+
+  const handleSizeChange = (evt) => {
+    setCoffeeSize(evt.target.value);
+    // console.log(coffeeSize)
+  };
+
+  const [hasAccepted, setHasAccepted] = useState(false)
+
+  const handleAcceptChange = (evt) => {
+    setHasAccepted(evt.target.checked)
   }
 
   return (
     <>
+    <FeedbackForm />
+
+    <div>
+      <label>
+        <input type="checkbox" name="terms" checked={hasAccepted} onChange={handleAcceptChange}/> 
+				I accept terms and conditions
+      </label>
+      <button type="button" disabled={!hasAccepted}>Proceed</button>
+    </div>
+    <hr />
+
+    <h1>Select coffee size</h1>
+    <label>
+        <input type="radio" name="coffeeSize" value="sm" checked={coffeeSize == "sm"} onChange={handleSizeChange}/>
+        Small
+    </label>
+    <label>
+        <input type="radio" name="coffeeSize" value="md" checked={coffeeSize == "md"} onChange={handleSizeChange}/>
+        Meduim
+    </label>
+    <label>
+        <input type="radio" name="coffeeSize" value="lg" checked={coffeeSize == "lg"} onChange={handleSizeChange}/>
+        Large
+    </label>
+    <hr />
+
+    <LangSwitcher value={lang} onSelect={setLang}/>
+    <hr />
+
     <SearchBar />
-    
+    <hr />
+
     <div>
       <h1>Login to your account</h1>
-      <LoginForm onLogin={handleLogin}/>
+      {/* <LoginForm onLogin={handleLogin}/> */}
+      <LoginForm />
     </div>
     
     <button onClick={() => setShowTimer((prev) => !prev)}>
