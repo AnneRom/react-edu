@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import  Product from './Product'
 import  Gallery from './Gallery'
@@ -11,15 +11,41 @@ import { IoBookOutline } from "react-icons/io5"
 // import  CustomButton from './Button'
 import  Button from './Button'
 import Fruits from './Fruits'
-import { useState } from 'react'
 import  ButtonEffect from './ButtonEffect'
 import  Timer from './Timer'
 import  LoginForm from './LoginForm'
 import  SearchBar from './SearchBar'
 import  LangSwitcher from './LangSwitcher'
 import  FeedbackForm from './FeedbackForm'
+import axios from 'axios';
 
 export default function App() {
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+    async function fetchArticles() {
+      const response = await axios.get(
+        "https://hn.algolia.com/api/v1/search?query=react"
+      );
+      console.log(response)
+      setArticles(response.data.hits)
+    }
+    fetchArticles()
+  }, [])
+
+  const [catUrl, setCatUrl] = useState([])
+
+  useEffect(() => {
+    async function fetchCats() {
+      const response = await axios.get(
+        "https://api.thecatapi.com/v1/images/search"
+      );
+      console.log(response)
+      setCatUrl(response.data[0].url)
+    }
+    fetchCats()
+  }, [])
+
   const [ clicks, setClicks ] = useState(0);
     
   const handleClick = () => {
@@ -48,6 +74,21 @@ export default function App() {
 
   return (
     <>
+    <h1>Котик дня</h1>
+    {catUrl ? <img src={catUrl} alt='random cat' style={{width: "500px"}}/> : <p>Завантаження...</p>}
+    <div>
+      <h1>Latest articles</h1>
+      {articles.length > 0 && (
+        <ul>
+          {articles.map(({ objectID, url, title}) => (
+            <li key={objectID}>
+              <a href={url} target='_blank'>{title}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
     <FeedbackForm />
 
     <div>
