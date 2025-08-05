@@ -18,17 +18,27 @@ import  SearchBar from './SearchBar'
 import  LangSwitcher from './LangSwitcher'
 import  FeedbackForm from './FeedbackForm'
 import axios from 'axios';
+import { ClimbingBoxLoader } from "react-spinners";
 
 export default function App() {
   const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     async function fetchArticles() {
-      const response = await axios.get(
+      try {
+        setLoading(true)
+        const response = await axios.get(
         "https://hn.algolia.com/api/v1/search?query=react"
       );
       console.log(response)
       setArticles(response.data.hits)
+      } catch (error) {
+
+      } finally {
+        setLoading(false)
+      }
+     
     }
     fetchArticles()
   }, [])
@@ -74,10 +84,9 @@ export default function App() {
 
   return (
     <>
-    <h1>Котик дня</h1>
-    {catUrl ? <img src={catUrl} alt='random cat' style={{width: "500px"}}/> : <p>Завантаження...</p>}
     <div>
       <h1>Latest articles</h1>
+      {loading &&  <ClimbingBoxLoader />}
       {articles.length > 0 && (
         <ul>
           {articles.map(({ objectID, url, title}) => (
@@ -88,6 +97,9 @@ export default function App() {
         </ul>
       )}
     </div>
+
+    <h1>Котик дня</h1>
+    {catUrl ? <img src={catUrl} alt='random cat' style={{width: "500px"}}/> : <p>Завантаження...</p>}
 
     <FeedbackForm />
 
