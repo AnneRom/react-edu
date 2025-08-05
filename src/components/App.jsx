@@ -23,17 +23,20 @@ import { ClimbingBoxLoader } from "react-spinners";
 export default function App() {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     async function fetchArticles() {
       try {
         setLoading(true)
         const response = await axios.get(
-        "https://hn.algolia.com/api/v1/search?query=react"
+        "https://hn.algolia.com/api/v11/search?query=react"
       );
       console.log(response)
       setArticles(response.data.hits)
       } catch (error) {
+        console.log(error)
+        setError(true)
 
       } finally {
         setLoading(false)
@@ -87,6 +90,7 @@ export default function App() {
     <div>
       <h1>Latest articles</h1>
       {loading &&  <ClimbingBoxLoader />}
+      {error && <p>Sorry, Error!</p>}
       {articles.length > 0 && (
         <ul>
           {articles.map(({ objectID, url, title}) => (
