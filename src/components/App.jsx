@@ -18,33 +18,30 @@ import  SearchBar from './SearchBar'
 import  LangSwitcher from './LangSwitcher'
 import  FeedbackForm from './FeedbackForm'
 import axios from 'axios';
-import { ClimbingBoxLoader } from "react-spinners";
+import { ClimbingBoxLoader } from "react-spinners"
+import { fetchArticlesWithTopic } from "../articles-api"
+import { SearchForm } from './SearchForm'
 
 export default function App() {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
-  useEffect(() => {
-    async function fetchArticles() {
+  
+    async function fetchArticles(topic) {
       try {
+        setArticles([])
+        setError(false)
         setLoading(true)
-        const response = await axios.get(
-        "https://hn.algolia.com/api/v11/search?query=react"
-      );
-      console.log(response)
-      setArticles(response.data.hits)
-      } catch (error) {
-        console.log(error)
+        const data = await fetchArticlesWithTopic(topic)
+        setArticles(data)
+      } catch {
         setError(true)
-
       } finally {
         setLoading(false)
-      }
-     
+      } 
     }
-    fetchArticles()
-  }, [])
+
 
   const [catUrl, setCatUrl] = useState([])
 
@@ -88,7 +85,8 @@ export default function App() {
   return (
     <>
     <div>
-      <h1>Latest articles</h1>
+      <h1>Search articles</h1>
+      <SearchForm  onSearch={fetchArticles}/>
       {loading &&  <ClimbingBoxLoader />}
       {error && <p>Sorry, Error!</p>}
       {articles.length > 0 && (
