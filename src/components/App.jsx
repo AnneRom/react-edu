@@ -22,6 +22,9 @@ import { ClimbingBoxLoader } from "react-spinners"
 import { fetchArticlesWithTopic } from "../articles-api"
 import { SearchForm } from './SearchForm'
 
+///
+import UseHooks from './useHooks/UseMemo'
+
 export default function App() {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(false)
@@ -84,6 +87,9 @@ export default function App() {
 
   return (
     <>
+    <UseHooks />
+    <hr />
+    
     <div>
       <h1>Search articles</h1>
       <SearchForm  onSearch={fetchArticles}/>
