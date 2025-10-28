@@ -23,7 +23,8 @@ import { fetchArticlesWithTopic } from "../articles-api"
 import { SearchForm } from './SearchForm'
 
 ///
-import UseHooks from './useHooks/UseMemo'
+import UseMemo from './useHooks/UseMemo'
+import UseRef from './useHooks/UseRef'
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -53,7 +54,7 @@ export default function App() {
       const response = await axios.get(
         "https://api.thecatapi.com/v1/images/search"
       );
-      console.log(response)
+      // console.log(response)
       setCatUrl(response.data[0].url)
     }
     fetchCats()
@@ -87,9 +88,11 @@ export default function App() {
 
   return (
     <>
-    <UseHooks />
+    <UseRef source="http://media.w3.org/2010/05/sintel/trailer.mp4"/>
     <hr />
-    
+    {/* <UseMemo /> */}
+    <hr />
+
     <div>
       <h1>Search articles</h1>
       <SearchForm  onSearch={fetchArticles}/>
@@ -151,7 +154,7 @@ export default function App() {
       {showTimer ? "Приховати таймер" : "Показати таймер"}
     </button>
 
-    {showTimer && <Timer />}
+    {/* {showTimer && <Timer />} */}
 
     <ButtonEffect />
 
@@ -222,7 +225,7 @@ export default function App() {
       </ul>
     </section>
 
-    <List />
+    {/* <List /> */}
 
     <Alert
        variant="warning"
