@@ -1,3 +1,4 @@
+import ReactPlayer from 'react-player';
 import { useRef, useState, useEffect } from 'react';
 
 const UseRef = ({ source }) => {
@@ -52,19 +53,26 @@ const UseRef = ({ source }) => {
 //   );
 //////////////////////////////////////////////
 
-    const playerRef = useRef();
+    const playerRef = useRef(null);
 
-    const play = () => playerRef.current.play();
-    const pause = () => playerRef.current.pause();
+    const play = () => 
+    {
+        // const internal = playerRef.current?.getInternalPlayer();
+        // internal?.playVideo()?.();
+        playerRef.current?.getInternalPlayer()?.playVideo();
+    }
+        // playerRef.current?.getInternalPlayer()?.playVideo();
+    const pause = () => playerRef.current?.getInternalPlayer()?.pauseVideo();
 
     return (
         <>
-        <video
+        <ReactPlayer
             ref={playerRef}
             width="400"
-            src={source}>
+            url={source}
+            controls>
 
-        </video>
+        </ ReactPlayer>
         <button onClick={play}>PLAY</button>
         <button onClick={pause}>PAUSE</button>
         </>

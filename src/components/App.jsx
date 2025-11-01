@@ -25,6 +25,9 @@ import { SearchForm } from './SearchForm'
 ///
 import UseMemo from './useHooks/UseMemo'
 import UseRef from './useHooks/UseRef'
+import ComponentA from './useHooks/ComponentA'
+import ComponentB from './useHooks/ComponentB'
+///
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -88,7 +91,11 @@ export default function App() {
 
   return (
     <>
-    <UseRef source="http://media.w3.org/2010/05/sintel/trailer.mp4"/>
+    <ComponentA />
+    <hr />
+    <ComponentB />
+    <hr />
+    <UseRef source="https://www.youtube.com/watch?v=TtPXvEcE11E"/>
     <hr />
     {/* <UseMemo /> */}
     <hr />
