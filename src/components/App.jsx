@@ -95,7 +95,7 @@ export default function App() {
     <hr />
     <ComponentB />
     <hr />
-    <UseRef source="https://www.youtube.com/watch?v=TtPXvEcE11E"/>
+    <UseRef source="http://media.w3.org/2010/05/sintel/trailer.mp4"/>
     <hr />
     {/* <UseMemo /> */}
     <hr />

@@ -52,25 +52,30 @@ const UseRef = ({ source }) => {
 //     </>
 //   );
 //////////////////////////////////////////////
-
-    const playerRef = useRef(null);
-
+    const [playing, setPlaying] = useState(false);
+    // const playerRef = useRef(null);
     const play = () => 
     {
         // const internal = playerRef.current?.getInternalPlayer();
         // internal?.playVideo()?.();
-        playerRef.current?.getInternalPlayer()?.playVideo();
+        // playerRef.current?.getInternalPlayer()?.playVideo();
+        setPlaying(true);
+        console.log('play' );
     }
         // playerRef.current?.getInternalPlayer()?.playVideo();
-    const pause = () => playerRef.current?.getInternalPlayer()?.pauseVideo();
-
+    const pause = () => {
+       // playerRef.current?.getInternalPlayer()?.pauseVideo();
+       setPlaying(false);
+       console.log('pause' );
+    } 
     return (
         <>
         <ReactPlayer
-            ref={playerRef}
+            playing={playing}
+            // ref={playerRef}
             width="400"
             url={source}
-            controls>
+            muted controls>
 
         </ ReactPlayer>
         <button onClick={play}>PLAY</button>
