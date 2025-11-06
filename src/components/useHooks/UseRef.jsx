@@ -52,35 +52,64 @@ const UseRef = ({ source }) => {
 //     </>
 //   );
 //////////////////////////////////////////////
-    const [playing, setPlaying] = useState(false);
-    // const playerRef = useRef(null);
-    const play = () => 
-    {
-        // const internal = playerRef.current?.getInternalPlayer();
-        // internal?.playVideo()?.();
-        // playerRef.current?.getInternalPlayer()?.playVideo();
-        setPlaying(true);
-        console.log('play' );
-    }
-        // playerRef.current?.getInternalPlayer()?.playVideo();
-    const pause = () => {
-       // playerRef.current?.getInternalPlayer()?.pauseVideo();
-       setPlaying(false);
-       console.log('pause' );
-    } 
-    return (
-        <>
-        <ReactPlayer
-            playing={playing}
-            // ref={playerRef}
-            width="400"
-            url={source}
-            muted controls>
+//   const playerRef = useRef(null);
+//   const [isPlaying, setIsPlaying] = useState(false);
+//   const [isMuted, setIsMuted] = useState(true);
 
-        </ ReactPlayer>
-        <button onClick={play}>PLAY</button>
-        <button onClick={pause}>PAUSE</button>
-        </>
-    )
+//   console.log("Render", { isPlaying, isMuted });
+
+//   const play = () => {
+//     console.log("play clicked");
+//     setIsPlaying(true);
+//   };
+
+//   const pause = () => {
+//     console.log("pause clicked");
+//     setIsPlaying(false);
+//   };
+
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "1rem" }}>
+//       <ReactPlayer
+//         ref={playerRef}
+//         url={source}
+//         playing={isPlaying}
+//         muted={isMuted}
+//         controls
+//         width="480px"
+//         height="270px"
+//         onReady={() => console.log("Player ready")}
+//         onPlay={() => {
+//           console.log("onPlay event triggered");
+//           setIsMuted(false);
+//         }}
+//         onPause={() => console.log("onPause event")}
+//         onError={(e) => console.error("Player error:", e)}
+//       />
+
+//       <div style={{ marginTop: "10px" }}>
+//         <button onClick={play}>Play</button>
+//         <button onClick={pause}>Pause</button>
+//       </div>
+//     </div>
+//   );
+const playerRef = useRef();
+
+  const play = () => playerRef.current.play();
+
+  const pause = () => playerRef.current.pause();
+
+  return (
+    <div>
+      <video ref={playerRef} src={source}>
+        Sorry, your browser does not support embedded videos.
+      </video>
+      <div>
+        <button onClick={play}>Play</button>
+        <button onClick={pause}>Pause</button>
+      </div>
+    </div>
+  );
+
 }
 export default UseRef;

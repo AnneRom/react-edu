@@ -28,6 +28,7 @@ import UseRef from './useHooks/UseRef'
 import ComponentA from './useHooks/ComponentA'
 import ComponentB from './useHooks/ComponentB'
 ///
+import { UserMenu } from './UserMenu';
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -91,11 +92,12 @@ export default function App() {
 
   return (
     <>
+    <UserMenu />
     <ComponentA />
     <hr />
     <ComponentB />
     <hr />
-    <UseRef source="http://media.w3.org/2010/05/sintel/trailer.mp4"/>
+    <UseRef source="https://media.w3.org/2010/05/sintel/trailer.mp4"/>
     <hr />
     {/* <UseMemo /> */}
     <hr />
