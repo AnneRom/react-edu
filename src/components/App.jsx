@@ -29,6 +29,7 @@ import ComponentA from './useHooks/ComponentA'
 import ComponentB from './useHooks/ComponentB'
 ///
 import { UserMenu } from './UserMenu';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -92,6 +93,8 @@ export default function App() {
 
   return (
     <>
+    <ThemeSwitcher />
+    <hr />
     <UserMenu />
     <ComponentA />
     <hr />

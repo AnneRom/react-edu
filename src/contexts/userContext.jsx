@@ -6,21 +6,23 @@ export const useUser = () => use(UserContext)
 
 export const UserProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState(null);
+    const [username, setUsername] = useState("");
 
-    const logIn = () => {
-        setIsLoggedIn(true);
-        setUsername('Hanna');
+    const logIn = (inputName, inputPassword) => {
+        if ((inputPassword === "123") && (inputName === "Hanna")) {
+            setIsLoggedIn(true);
+            setUsername(inputName);
+        }
     };
     const logOut = () => {
         setIsLoggedIn(false);
-        setUsername(null);
+        // setUsername(null);
     };
 
     return (
-        <UserContext value={ { isLoggedIn, username, logIn, logOut} }>
+        <UserContext.Provider value={ { isLoggedIn, username, logIn, logOut} }>
             {children}
-        </UserContext>
+        </UserContext.Provider>
 
     );
 };

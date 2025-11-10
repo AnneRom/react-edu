@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './components/App.jsx'
 import { UserContext, UserProvider } from './contexts/userContext.jsx';
+import { ThemeProvider } from './contexts/themeContext.jsx';
 
 // const initialUserValue = {
 //   username: 'Hanna',
@@ -12,7 +13,9 @@ import { UserContext, UserProvider } from './contexts/userContext.jsx';
 createRoot(document.getElementById('root')).render(
  <StrictMode>
     <UserProvider>
-      <App />
+      <ThemeProvider>
+         <App />
+      </ThemeProvider>
     </UserProvider>
  </StrictMode>,
 )
