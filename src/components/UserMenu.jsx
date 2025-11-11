@@ -1,5 +1,7 @@
 import { useUser } from '../contexts/userContext.jsx';
+import { useTheme } from '../contexts/themeContext.jsx';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 export const UserMenu = () => {
     const [inputValue, setInputValue] = useState("");
@@ -10,6 +12,7 @@ export const UserMenu = () => {
         logIn(inputValue, inputPassword);
         setInputValue("");
     }
+    const { theme } = useTheme();
 
     return (
     <div>
@@ -31,7 +34,9 @@ export const UserMenu = () => {
         onChange={(e) => setInputPassword(e.target.value)}
          />
         <hr />
-        <button onClick={handleLogin}>Увійти в профіль</button>
+        <button onClick={handleLogin} className={clsx("login-button", theme === 'dark' ? 'dark-button' : 'light-button')}>
+               Увійти в профіль
+        </button>
         </>    
     )}
     </div>

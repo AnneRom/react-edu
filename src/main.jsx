@@ -2,8 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './components/App.jsx'
-import { UserContext, UserProvider } from './contexts/userContext.jsx';
-import { ThemeProvider } from './contexts/themeContext.jsx';
+import { AppProvider } from './contexts/AppProviders.jsx'
 
 // const initialUserValue = {
 //   username: 'Hanna',
@@ -11,11 +10,9 @@ import { ThemeProvider } from './contexts/themeContext.jsx';
 // };
 
 createRoot(document.getElementById('root')).render(
- <StrictMode>
-    <UserProvider>
-      <ThemeProvider>
-         <App />
-      </ThemeProvider>
-    </UserProvider>
- </StrictMode>,
+//  <StrictMode
+   <AppProvider>
+      <App />
+   </AppProvider>
+//  </StrictMode>,
 )

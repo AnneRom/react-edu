@@ -5,12 +5,17 @@ export const ThemeContext = createContext();
 export const useTheme = () => use(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('');
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
+        // console.log('Saved theme:', savedTheme);
+        //  console.log('Theme:', theme);
         if (savedTheme) {
             setTheme(savedTheme);
+        } else {
+            setTheme('light');
+            // console.log('Else:', theme)
         }
     }, []);
 
