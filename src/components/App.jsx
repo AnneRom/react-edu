@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import './App.css'
+import { useEffect, useState } from 'react'
+// import  css from './App.css'
 import  Product from './Product'
 import  Gallery from './Gallery'
 import  MailBox from './MailBox'
@@ -30,6 +30,12 @@ import ComponentB from './useHooks/ComponentB'
 ///
 import { UserMenu } from './UserMenu';
 import { ThemeSwitcher } from './ThemeSwitcher';
+//Маршрутизація React
+import { Routes, Route, NavLink} from "react-router-dom";
+import clsx from 'clsx';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contacts from './pages/Contacts';
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -91,8 +97,37 @@ export default function App() {
     setHasAccepted(evt.target.checked)
   }
 
+
+  const buildLinkClass = ({ isActive }) => {
+    return clsx("link", isActive && "active");
+};
+
   return (
     <>
+    <h1>Маршрутизація React</h1>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/" className={buildLinkClass}>Головна</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about" className={buildLinkClass}>Про нас</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contacts" className={buildLinkClass}>Контакти</NavLink>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/about' element={<About />}/>
+        <Route path='/contacts' element={<Contacts />}/>
+        <Route path='*' element={<h2>Сторінку не знайдено</h2>}/>
+      </Routes>
+
+    </div>
+    <hr />
     <ThemeSwitcher />
     <hr />
     <UserMenu />
