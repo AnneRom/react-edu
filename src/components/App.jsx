@@ -27,6 +27,8 @@ import UseMemo from './useHooks/UseMemo'
 import UseRef from './useHooks/UseRef'
 import ComponentA from './useHooks/ComponentA'
 import ComponentB from './useHooks/ComponentB'
+import VideoPlayer from './ReactPlayer'
+import ReactPlayer from 'react-player';
 ///
 import { UserMenu } from './UserMenu';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -107,7 +109,7 @@ export default function App() {
     <h1>Маршрутизація React</h1>
     <div>
       <nav>
-        <ul>
+        <ul className='routerList'>
           <li>
             <NavLink to="/" className={buildLinkClass}>Головна</NavLink>
           </li>
@@ -125,8 +127,10 @@ export default function App() {
         <Route path='/contacts' element={<Contacts />}/>
         <Route path='*' element={<h2>Сторінку не знайдено</h2>}/>
       </Routes>
-
     </div>
+
+    <VideoPlayer src="https://www.youtube.com/watch?v=xNRJwmlRBNU" />
+    <VideoPlayer src="https://media.w3.org/2010/05/sintel/trailer.mp4" />
     <hr />
     <ThemeSwitcher />
     <hr />
