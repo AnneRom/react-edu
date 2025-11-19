@@ -38,6 +38,7 @@ import clsx from 'clsx';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
+import MainLayout from './layouts/MainLayout'
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -99,32 +100,20 @@ export default function App() {
     setHasAccepted(evt.target.checked)
   }
 
-
-  const buildLinkClass = ({ isActive }) => {
-    return clsx("link", isActive && "active");
-};
-
   return (
     <>
-    <h1>Маршрутизація React</h1>
     <div>
-      <nav>
-        <ul className='routerList'>
-          <li>
-            <NavLink to="/" className={buildLinkClass}>Головна</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" className={buildLinkClass}>Про нас</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contacts" className={buildLinkClass}>Контакти</NavLink>
-          </li>
-        </ul>
-      </nav>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/about' element={<About />}/>
-        <Route path='/contacts' element={<Contacts />}/>
+        <Route path='/' element={<MainLayout />}>
+          <Route index element={<Home />}/>
+          <Route path='/about' element={<About />}>
+              <Route path='mission' element={<h2>Наша місія</h2>}/>
+              <Route path='team' element={<h2>Наша команда</h2>}/>
+              <Route path='review' element={<h2>Наші відгуки</h2>}/>
+          </Route>
+          <Route path='/contacts' element={<Contacts />}/>
+        </Route>
+
         <Route path='*' element={<h2>Сторінку не знайдено</h2>}/>
       </Routes>
     </div>

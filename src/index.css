@@ -50,7 +50,7 @@ body.dark {
     font-weight: 600;
     color: rgb(0, 12, 175);
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 .link:hover {
     text-decoration: underline;
@@ -58,4 +58,5 @@ body.dark {
 .link.active {
     font-weight: 800;
     background-color: rgb(255, 255, 178);
+    box-shadow: 0 0 10px rgba(0, 12, 175, 0.2);
 }
