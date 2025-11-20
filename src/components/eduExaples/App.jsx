@@ -19,14 +19,14 @@ import  LangSwitcher from './LangSwitcher'
 import  FeedbackForm from './FeedbackForm'
 import axios from 'axios';
 import { ClimbingBoxLoader } from "react-spinners"
-import { fetchArticlesWithTopic } from "../articles-api"
+import { fetchArticlesWithTopic } from "../../articles-api"
 import { SearchForm } from './SearchForm'
 
 ///
-import UseMemo from './useHooks/UseMemo'
-import UseRef from './useHooks/UseRef'
-import ComponentA from './useHooks/ComponentA'
-import ComponentB from './useHooks/ComponentB'
+import UseMemo from '../useHooks/UseMemo'
+import UseRef from '../useHooks/UseRef'
+import ComponentA from '../useHooks/ComponentA'
+import ComponentB from '../useHooks/ComponentB'
 import VideoPlayer from './ReactPlayer'
 import ReactPlayer from 'react-player';
 ///
@@ -35,10 +35,10 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 //Маршрутизація React
 import { Routes, Route, NavLink} from "react-router-dom";
 import clsx from 'clsx';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contacts from './pages/Contacts';
-import MainLayout from './layouts/MainLayout'
+import Home from '../pages/Home';
+import About from '../pages/About';
+import Contacts from '../pages/Contacts';
+import MainLayout from '../layouts/MainLayout'
 
 export default function App() {
   const [articles, setArticles] = useState([])

@@ -1,5 +1,5 @@
-import { useUser } from '../contexts/userContext.jsx';
-import { useTheme } from '../contexts/themeContext.jsx';
+import { useUser } from '../../contexts/userContext.jsx';
+import { useTheme } from '../../contexts/themeContext.jsx';
 import { useState } from 'react';
 import clsx from 'clsx';
 
