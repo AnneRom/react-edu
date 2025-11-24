@@ -38,7 +38,9 @@ import clsx from 'clsx';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Contacts from '../pages/Contacts';
-import MainLayout from '../layouts/MainLayout'
+import MainLayout from '../layouts/MainLayout';
+import Products from '../pages/Products';
+import { ProductDetails } from '../pages/ProductDetails';
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -112,6 +114,8 @@ export default function App() {
               <Route path='review' element={<h2>Наші відгуки</h2>}/>
           </Route>
           <Route path='/contacts' element={<Contacts />}/>
+          <Route path='/products' element={<Products />}/>
+          <Route path="products/:productId" element={<ProductDetails />} />
         </Route>
 
         <Route path='*' element={<h2>Сторінку не знайдено</h2>}/>
