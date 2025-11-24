@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const products = [
   { id: 1, name: "iPhone 15" },
@@ -8,6 +8,7 @@ const products = [
 ];
 
 function Products () {
+  const navigate = useNavigate();
   return (
     <div>
         <h2>Продукти компанії</h2>
@@ -18,6 +19,7 @@ function Products () {
           </li>
         ))}
       </ul>
+      <button onClick={() => navigate("/about/team")}>Про нас</button>
     </div>
    
   );

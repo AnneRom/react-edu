@@ -41,6 +41,7 @@ import Contacts from '../pages/Contacts';
 import MainLayout from '../layouts/MainLayout';
 import Products from '../pages/Products';
 import { ProductDetails } from '../pages/ProductDetails';
+import { NotFound } from '../pages/NotFound'
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -118,7 +119,7 @@ export default function App() {
           <Route path="products/:productId" element={<ProductDetails />} />
         </Route>
 
-        <Route path='*' element={<h2>Сторінку не знайдено</h2>}/>
+        <Route path='*' element={<NotFound />}/>
       </Routes>
     </div>
 
