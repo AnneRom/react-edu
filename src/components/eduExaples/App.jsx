@@ -41,7 +41,8 @@ import Contacts from '../pages/Contacts';
 import MainLayout from '../layouts/MainLayout';
 import Products from '../pages/Products';
 import { ProductDetails } from '../pages/ProductDetails';
-import { NotFound } from '../pages/NotFound'
+import { NotFound } from '../pages/NotFound';
+import { Dashboard } from '../pages/Dashboard';
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -117,6 +118,8 @@ export default function App() {
           <Route path='/contacts' element={<Contacts />}/>
           <Route path='/products' element={<Products />}/>
           <Route path="products/:productId" element={<ProductDetails />} />
+          <Route path='/login' element={<UserMenu />}/>
+          <Route path='/dashboard' element={<Dashboard />}/>
         </Route>
 
         <Route path='*' element={<NotFound />}/>

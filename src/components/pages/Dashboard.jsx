@@ -1,11 +1,15 @@
-import { use } from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../../contexts/userContext.jsx";
 
 export const Dashboard = () => {
-    const { isLoggedIn } = useUser();
+    const { isLoggedIn, username, logOut } = useUser();
         if (!isLoggedIn) {
             return <Navigate to="/login" replace />;
         }
-    return <h1>Ласкаво просимо в особистий кабінет</h1>;
+    return (
+        <div>
+             <h1>Ласкаво просимо в особистий кабінет, {username}</h1>
+             <button onClick={logOut}>Вийти з профілю</button>
+        </div>
+    ) 
 };
