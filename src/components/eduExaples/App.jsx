@@ -1,3 +1,5 @@
+import { Suspense, lazy } from 'react';
+//
 import { useEffect, useState } from 'react'
 // import  css from './App.css'
 import  Product from './Product'
@@ -30,19 +32,28 @@ import ComponentB from '../useHooks/ComponentB'
 import VideoPlayer from './ReactPlayer'
 import ReactPlayer from 'react-player';
 ///
-import { UserMenu } from './UserMenu';
+// import { UserMenu } from './UserMenu';
 import { ThemeSwitcher } from './ThemeSwitcher';
 //Маршрутизація React
 import { Routes, Route, NavLink} from "react-router-dom";
 import clsx from 'clsx';
-import Home from '../pages/Home';
-import About from '../pages/About';
-import Contacts from '../pages/Contacts';
+// import Home from '../pages/Home';
+// import About from '../pages/About';
+// import Contacts from '../pages/Contacts';
 import MainLayout from '../layouts/MainLayout';
-import Products from '../pages/Products';
-import { ProductDetails } from '../pages/ProductDetails';
-import { NotFound } from '../pages/NotFound';
-import { Dashboard } from '../pages/Dashboard';
+// import Products from '../pages/Products';
+// import { ProductDetails } from '../pages/ProductDetails';
+// import { NotFound } from '../pages/NotFound';
+// import { Dashboard } from '../pages/Dashboard';
+const Home = lazy(() => import('../pages/Home'));
+const About = lazy(() => import('../pages/About'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+const Products = lazy(() => import('../pages/Products'));
+const ProductDetails  = lazy(() => import('../pages/ProductDetails'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+const Dashboard = lazy(() => import('../pages/Dashboard'));
+const UserMenu = lazy(() => import('./UserMenu'));
+
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -107,7 +118,8 @@ export default function App() {
   return (
     <>
     <div>
-      <Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home />}/>
           <Route path='/about' element={<About />}>
@@ -124,6 +136,7 @@ export default function App() {
 
         <Route path='*' element={<NotFound />}/>
       </Routes>
+      </Suspense>
     </div>
 
     <VideoPlayer src="https://www.youtube.com/watch?v=xNRJwmlRBNU" />

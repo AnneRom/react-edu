@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../contexts/userContext.jsx";
 
-export const Dashboard = () => {
+const Dashboard = () => {
     const { isLoggedIn, username, logOut } = useUser();
         if (!isLoggedIn) {
             return <Navigate to="/login" replace />;
@@ -13,3 +13,4 @@ export const Dashboard = () => {
         </div>
     ) 
 };
+export default Dashboard;

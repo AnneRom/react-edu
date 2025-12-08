@@ -3,7 +3,7 @@ import { useTheme } from '../../contexts/themeContext.jsx';
 import { useState } from 'react';
 import clsx from 'clsx';
 
-export const UserMenu = () => {
+const UserMenu = () => {
     const [inputValue, setInputValue] = useState("");
     const [inputPassword, setInputPassword] = useState("");
 
@@ -42,3 +42,4 @@ export const UserMenu = () => {
     </div>
     );
 };
+export default UserMenu;

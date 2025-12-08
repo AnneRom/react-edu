@@ -3,7 +3,7 @@
 import { useParams, useLocation, Link } from "react-router-dom";
 
 
-export const ProductDetails = () => {
+const ProductDetails = () => {
   const { productId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/products";
@@ -25,3 +25,4 @@ export const ProductDetails = () => {
     </div>
   );
 };
+export default ProductDetails;

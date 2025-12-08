@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const NotFound = () => {
+const NotFound = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -17,3 +17,4 @@ export const NotFound = () => {
         </div>
     );
 }
+export default NotFound;
